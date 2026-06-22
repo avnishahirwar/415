@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+
+
+
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -150,6 +159,65 @@ color:#cbd5e1;
 
 <body>
 
+
+<script>
+
+const SUPABASE_URL =
+"https://gtuycqunlihegsbvvsol.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_zFqzEsppitLusrbVtSakQQ_plPLsg-C";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+async function loadUsers(){
+
+const { data, error } =
+await supabaseClient
+.from("profiles")
+.select("*");
+
+if(error){
+console.log(error);
+return;
+}
+
+let html="";
+
+document.getElementById("users").innerHTML =
+data.length;
+
+data.forEach(user=>{
+
+html += `
+<tr>
+<td>${user.email}</td>
+<td>${user.role}</td>
+<td class="status">Active</td>
+</tr>
+`;
+
+});
+
+document.getElementById(
+"usersTable"
+).innerHTML = html;
+
+}
+
+loadUsers();
+
+</script>
+
+
+
+
+
+  
 <div class="navbar">
 <div class="logo">ADMIN PANEL</div>
 
