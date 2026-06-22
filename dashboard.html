@@ -1,19 +1,247 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | Avnish Ahirwar</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+min-height:100vh;
+color:white;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#38bdf8;
+}
+
+.navbar span{
+font-size:18px;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:40px auto;
+}
+
+.profile-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+padding:30px;
+display:flex;
+align-items:center;
+gap:25px;
+margin-bottom:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.profile-photo{
+width:120px;
+height:120px;
+border-radius:50%;
+border:4px solid #38bdf8;
+object-fit:cover;
+}
+
+.profile-info h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.profile-info p{
+color:#cbd5e1;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+color:#38bdf8;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:18px;
+}
+
+.resources{
+margin-top:30px;
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
+
+.resources h2{
+margin-bottom:20px;
+color:#38bdf8;
+}
+
+.resource-btn{
+display:inline-block;
+margin:10px;
+padding:12px 20px;
+background:#38bdf8;
+color:black;
+text-decoration:none;
+font-weight:bold;
+border-radius:30px;
+}
+
+.logout{
+margin-top:30px;
+padding:15px 30px;
+background:#ef4444;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+color:#cbd5e1;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Welcome To Dashboard</h1>
+<div class="navbar">
+<div class="logo">AVNISH</div>
+<span>Premium Dashboard</span>
+</div>
 
-<p id="userEmail"></p>
+<div class="container">
 
-<button onclick="logout()">
+<div class="profile-card">
+
+<img
+src="https://i.imgur.com/8Km9tLL.png"
+class="profile-photo">
+
+<div class="profile-info">
+
+<h2 id="userEmail">
+Loading...
+</h2>
+
+<p>CEO • Entrepreneur • Developer</p>
+
+<p>Building Businesses & Global Personal Brand</p>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Account Status</h3>
+<p>✅ Active</p>
+</div>
+
+<div class="card">
+<h3>Membership</h3>
+<p>⭐ Premium</p>
+</div>
+
+<div class="card">
+<h3>Projects</h3>
+<p>🚀 5 Active Projects</p>
+</div>
+
+<div class="card">
+<h3>Downloads</h3>
+<p>📂 12 Resources</p>
+</div>
+
+<div class="card">
+<h3>Profile Completion</h3>
+<p>85%</p>
+</div>
+
+<div class="card">
+<h3>Website Status</h3>
+<p>🌐 Online</p>
+</div>
+
+</div>
+
+<div class="resources">
+
+<h2>Premium Resources</h2>
+
+<a href="#" class="resource-btn">
+Business Templates
+</a>
+
+<a href="#" class="resource-btn">
+Startup Resources
+</a>
+
+<a href="#" class="resource-btn">
+AI Tools
+</a>
+
+<a href="#" class="resource-btn">
+E-books
+</a>
+
+</div>
+
+<button class="logout" onclick="logout()">
 Logout
 </button>
+
+</div>
+
+<div class="footer">
+© 2026 Avnish Ahirwar | Premium Dashboard
+</div>
 
 <script>
 
