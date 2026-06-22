@@ -1,24 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sign Up</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up | Avnish Ahirwar</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f172a,#2563eb);
+}
+
+.container{
+width:450px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+color:white;
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#38bdf8;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+p{
+margin-top:20px;
+text-align:center;
+}
+
+a{
+color:#38bdf8;
+text-decoration:none;
+}
+
+</style>
 </head>
+
 <body>
-    <h1>Create Account</h1>
 
-    <form>
-        <input type="text" placeholder="Full Name" required><br><br>
+<div class="container">
 
-        <input type="email" placeholder="Email" required><br><br>
+<h1>Create Account</h1>
 
-        <input type="password" placeholder="Password" required><br><br>
+<form>
 
-        <button type="submit">Create Account</button>
-    </form>
+<input type="text" placeholder="Full Name" required>
 
-    <p>
-        Already have an account?
-        <a href="login.html">Login</a>
-    </p>
+<input type="email" placeholder="Email" required>
+
+<input type="password" placeholder="Password" required>
+
+<input type="password" placeholder="Confirm Password" required>
+
+<button type="submit">
+Create Account
+</button>
+
+</form>
+
+<p>
+Already have an account?
+<a href="login.html">Login</a>
+</p>
+
+</div>
+
 </body>
 </html>
