@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Success Planner | AVNISH</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#07122b,#2563eb);
+min-height:100vh;
+color:white;
+padding:20px;
+}
+
+.header{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+margin-bottom:20px;
+}
+
+.header h1{
+color:#38bdf8;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-bottom:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+}
+
+.card h3{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.card h2{
+font-size:28px;
+}
+
+.search{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+margin-bottom:20px;
+font-size:16px;
+}
+
+.table-box{
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+overflow:auto;
+padding:20px;
+backdrop-filter:blur(15px);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#38bdf8;
+color:black;
+padding:12px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+tr:hover{
+background:rgba(255,255,255,0.05);
+}
+
+.status{
+font-weight:bold;
+color:#fbbf24;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+color:#cbd5e1;
+}
+
+.progress-box{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.progress{
+height:20px;
+background:#1e293b;
+border-radius:30px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#22c55e;
+transition:1s;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🚀 Daily Success Planner</h1>
+<p>Track Your Daily Billionaire Routine</p>
+</div>
+
+<div class="stats">
+
+<div class="card">
+<h3>Total Tasks</h3>
+<h2 id="totalTasks">0</h2>
+</div>
+
+<div class="card">
+<h3>Pending</h3>
+<h2 id="pendingTasks">0</h2>
+</div>
+
+<div class="card">
+<h3>Completed</h3>
+<h2 id="completedTasks">0</h2>
+</div>
+
+</div>
+
+<div class="progress-box">
+
+<h3>Daily Progress</h3>
+<br>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+</div>
+
+<input
+type="text"
+class="search"
+placeholder="Search Task..."
+id="searchInput">
+
+<div class="table-box">
+
+<table id="taskTable">
+
+<thead>
+
+<tr>
+<th>S.No</th>
+<th>Task</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="footer">
+© 2026 AVNISH SUCCESS PLANNER
+</div>
+
+<script>
+
+fetch("planner.csv")
+.then(response=>response.text())
+.then(data=>{
+
+const rows=data.trim().split("\n");
+
+let tableBody=document.querySelector("#taskTable tbody");
+
+let total=0;
+let pending=0;
+
+rows.slice(1).forEach(row=>{
+
+const cols=row.split(",");
+
+if(cols.length>=3){
+
+total++;
+pending++;
+
+tableBody.innerHTML+=`
+
+<tr>
+
+<td>${cols[0]}</td>
+
+<td>${cols[1]}</td>
+
+<td class="status">${cols[2]}</td>
+
+</tr>
+
+`;
+
+}
+
+});
+
+document.getElementById("totalTasks").innerText=total;
+document.getElementById("pendingTasks").innerText=pending;
+document.getElementById("completedTasks").innerText="0";
+
+});
+
+document.getElementById("searchInput")
+.addEventListener("keyup",function(){
+
+let filter=this.value.toLowerCase();
+
+let rows=document.querySelectorAll("#taskTable tbody tr");
+
+rows.forEach(row=>{
+
+let text=row.innerText.toLowerCase();
+
+row.style.display=text.includes(filter)
+?"":"none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
